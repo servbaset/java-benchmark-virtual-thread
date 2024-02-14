@@ -1,8 +1,12 @@
-create docker image : 
+create graalvm docker image :
 ````
-docker buildx build . --tag java-benchmark
+./gradlew bootBuildImage
+````
+create jvm docker image : 
+````
+docker buildx build . --tag benchmark
 ````
 run : 
 ````
-docker run  -e PORT=8080 -e WAITING-SERVER=http://192.168.1.101:8081/ -p 8080:8080 -it java-benchmark
+docker run  -e PORT=8080 -e WAITING-SERVER=http://192.168.1.101:8081/ -p 8080:8080 -it benchmark
 ````
